@@ -8,15 +8,19 @@ import com.imooc.pojo.vo.NewItemsVO;
 import com.imooc.service.CarouselService;
 import com.imooc.service.CategoryService;
 import com.imooc.utils.IMOOCJSONResult;
+import com.imooc.utils.JsonUtils;
+import com.imooc.utils.RedisOperator;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.List;
 
 //第二
@@ -31,10 +35,28 @@ public class IndexController {
     @Autowired
     private CategoryService categoryService;
 
+    @Autowired
+    private RedisOperator redisOperator;
+
+    /**
+     * 对于运营系统，一但轮播图发生改变，就可以删除缓存，然后重置
+     * 定时重置
+     * @return
+     */
+
     @ApiOperation(value = "获取首页轮播图列表", notes = "获取首页轮播图列表", httpMethod = "GET")
     @GetMapping("/carousel")
     public IMOOCJSONResult carousel() {
-        List<Carousel> list = carouselService.queryAll(YesOrNo.YES.type);
+        String  carouselStr=redisOperator.get("carousel");
+        List<Carousel> list=new ArrayList<>();
+        // redis中没有值，先查询值，然后将值放入到redis中
+        if(StringUtils.isBlank(carouselStr)){
+            list = carouselService.queryAll(YesOrNo.YES.type);
+            redisOperator.set("carousel",JsonUtils.objectToJson(list));
+        }else{
+            // 查询已经分布式存储的字符串类型并将其转化为list
+            list=JsonUtils.jsonToList(carouselStr,Carousel.class);
+        }
         return IMOOCJSONResult.ok(list);
     }
 
