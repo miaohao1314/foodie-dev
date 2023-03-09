@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+	
+<head lang="en">
+	<!-- 第一 -->
+	<meta charset="UTF-8">
+	<title>天天吃货 - 登录</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+	<link rel="shortcut icon" href="img/foodie.ico" />
+
+	<link rel="stylesheet" href="AmazeUI-2.4.2/assets/css/amazeui.css" /> 
+	<link href="css/dlstyle.css" rel="stylesheet" type="text/css">
+	<script src="./js/vue.js"></script>
+	<!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.6.9/dist/vue.js"></script> -->
+	<script src="./js/axios.min.js"></script>
+	<!-- <script src="https://unpkg.com/axios/dist/axios.min.js"></script> -->
+</head>
+
+<body>
+
+	<div class="login-boxtitle">
+		<a href="index.html"><img alt="logo" src="images/logobig.png" /></a>
+	</div>
+
+	<div class="login-banner" id="login">
+		<div class="login-main">
+			<div class="login-banner-bg"><span></span><img src="img/loginpage.png" /></div>
+
+			<div class="login-box">
+				<h3 class="title">登录商城</h3>
+				<div class="clear"></div>
+				<div class="login-form">
+					<form>
+						<div class="user-name">
+							<label for="user"><i class="am-icon-user"></i></label>
+							<input type="text" v-model="username" id="user" placeholder="请输入用户名">
+						</div>
+						<div class="user-pass">
+							<label for="password"><i class="am-icon-lock"></i></label>
+							<input type="password" v-model="password" id="password" placeholder="请输入密码">
+						</div>
+					</form>
+				</div>
+
+				<div class="login-links">
+					<!-- 注册成功会跳转 -->
+					<a :href="'register.html?returnUrl=' + returnUrl" class="am-fr">前往注册</a>
+					<br />
+				</div>
+				<div class="am-cf">
+					<input type="button" name="" value="登 录" @click="doLogin" class="am-btn am-btn-primary am-btn-sm">
+				</div>
+			</div>
+			
+		</div>
+	</div>
+
+
+	<div class="footer ">
+		<div class="footer-hd">
+			<p>
+				<a href="https://www.baidu.com/" target="_blank">百度一下</a>
+				<b>|</b>
+				<a href="https://www.tmall.com/" target="_blank">天猫</a>
+				<b>|</b>
+				<a href="https://www.jd.com/" target="_blank">京东</a>
+				<b>|</b>
+				<a href="https://www.meituan.com/" target="_blank">美团</a>
+				<b>|</b>
+				<a href="https://www.douyin.com/" target="_blank">抖音</a>
+			</p>
+		</div>
+		<div class="footer-bd ">
+			<p>
+				<em>© 2022  陕ICP备12003357号-11 苗浩 版权所有</em>
+			</p>
+		</div>
+	</div>
+
+
+	<script type="text/javascript " src="js/app.js"></script>
+	<script type="text/javascript">
+		var index = new Vue({
+			el: "#login",
+			data: {
+				username: null,
+				password: null,
+
+				returnUrl: ""
+			},
+			created() {
+
+				// 登录成功后会跳原来页面
+				var returnUrl = app.getUrlParam("returnUrl");
+				if (returnUrl != null && returnUrl != undefined && returnUrl != '') {
+					this.returnUrl = returnUrl;
+				}
+			},
+			methods: {
+				getRequest() {
+				},
+				postRequest() {
+				},
+				doLogin() {
+
+					if (this.username == null || this.username == undefined || this.username == '') {
+						alert("用户名不能为空");
+						return;
+					} else if (this.password == null || this.password == undefined || this.password == '') {
+						alert("密码不能为空");
+						return;
+					} else if (this.password.length < 6) {
+						alert("密码不能少于6位");
+						return;
+					}
+
+					var userBO = {
+						username: this.username,
+						password: this.password
+					};
+					// console.log(userBO);
+
+					var serverUrl = app.serverUrl;
+
+					var returnUrl = this.returnUrl;
+					// form提交(是否可以携带cookie信息)
+					axios.defaults.withCredentials = true;
+					// console.log(axios.defaults);
+					axios.post(serverUrl + '/passport/login', userBO)
+						.then(res => {
+							// debugger;
+							if (res.data.status == 200) {
+								var user = res.data;
+								// console.log(user);
+
+								// window.location.href = app.ctx + "/index.html";
+								// 这里可以看购物车那个登录成功以后会跳转到购物车页面
+								if (returnUrl != null && returnUrl != undefined && returnUrl != '') {
+									window.location.href = returnUrl;
+								} else {
+									window.location.href = "index.html";
+								}
+
+							} else if (res.data.status == 500) {
+								alert(res.data.msg);
+								return;
+							}
+						});
+				}
+			}
+		});
+	</script>
+</body>
+
+</html>
