@@ -11,6 +11,17 @@ spring:
     password: imooc
     host: 43.143.191.173
     port: 6379
+    #集成redis哨兵模式
+    #database: 1
+    #password: imooc
+    #sentinel:
+      #master: imooc-master
+      #nodes: 43.143.191.173:26379,3.143.191.174:26379,3.143.191.175:26379,
+
+    #集成Redis集群模式
+    #password: imooc
+    #cluster:
+    #  nodes:43.143.191.176:6379,43.143.191.177:6379,43.143.191.178:6379,
 
 mybatis:
   configuration:

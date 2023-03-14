@@ -19,7 +19,7 @@
      * 				556: 用户qq校验异常
      * @Copyright: Copyright (c) 2020
      * @Company: www.imooc.com
-     * @author 慕课网 - 风间影月
+     * @author 苗浩
      * @version V1.0
      */
     public class IMOOCJSONResult {
