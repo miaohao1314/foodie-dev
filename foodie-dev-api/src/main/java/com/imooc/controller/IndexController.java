@@ -54,7 +54,7 @@ public class IndexController {
             list = carouselService.queryAll(YesOrNo.YES.type);
             redisOperator.set("carousel",JsonUtils.objectToJson(list));
         }else{
-            // 查询已经分布式存储的字符串类型并将其转化为list
+            // 查询已经分布式存储的redis字符串类型并将其转化为list
             list=JsonUtils.jsonToList(carouselStr,Carousel.class);
         }
         return IMOOCJSONResult.ok(list);
@@ -82,8 +82,17 @@ public class IndexController {
         if (rootCatId == null) {
             return IMOOCJSONResult.errorMsg("分类不存在");
         }
-
-        List<CategoryVO> list = categoryService.getSubCatList(rootCatId);
+        List<CategoryVO> list=new ArrayList<>();
+        String  catsStr =redisOperator.get("subCat"+rootCatId);
+        if(StringUtils.isBlank(catsStr)){
+            list = categoryService.getSubCatList(rootCatId);
+            // 这里对list进行判空
+            if(list!=null&&list.size()>0){
+                redisOperator.set("subCat"+rootCatId,JsonUtils.objectToJson(list));
+            }
+        }else{
+            list =JsonUtils.jsonToList(catsStr,CategoryVO.class);
+        }
         return IMOOCJSONResult.ok(list);
     }
 
