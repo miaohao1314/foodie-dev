@@ -89,6 +89,9 @@ public class IndexController {
             // 这里对list进行判空
             if(list!=null&&list.size()>0){
                 redisOperator.set("subCat"+rootCatId,JsonUtils.objectToJson(list));
+            }else{
+                // 解决缓存穿透，查出来是一个空数组，就会直接从缓存中去读取数据
+                redisOperator.set("subCat"+rootCatId,JsonUtils.objectToJson(list),5*60);
             }
         }else{
             list =JsonUtils.jsonToList(catsStr,CategoryVO.class);
