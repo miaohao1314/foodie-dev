@@ -8,6 +8,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import springfox.documentation.annotations.ApiIgnore;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 @ApiIgnore
 @RestController
 @RequestMapping("redis")
@@ -41,4 +45,41 @@ public class RedisController {
         redisOperator.del(key);
         return "OK";
     }
+
+    /**
+     * 大量key的查询
+     * @return
+     */
+    @GetMapping("/getALot")
+    public  Object getALot(String... keys){
+        // 将for循环中返回的值封装在list集合中
+        List<String> resutl=new ArrayList<>();
+        for (String key : keys) {
+            resutl.add(redisOperator.get(key));
+        }
+        return resutl;
+    }
+
+    /**
+     * 批量查询mget
+     * @return
+     * http://127.0.0.1:8088/redis/mget?keys=a1,c1
+     */
+    @GetMapping("/mget")
+    public  Object mget(String... keys){
+        // 将数组转化为list
+        List<String> keyList= Arrays.asList(keys);
+        return  redisOperator.mget(keyList);
+    }
+
+
+
+
+
+
+
+
+
+
+
 }

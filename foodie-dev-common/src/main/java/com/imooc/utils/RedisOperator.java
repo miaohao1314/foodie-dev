@@ -115,6 +115,7 @@ public class RedisOperator {
 	 * @return
 	 */
 	public List<String> mget(List<String> keys) {
+		// 封装redis批量查询
 		return redisTemplate.opsForValue().multiGet(keys);
 	}
 
