@@ -72,8 +72,16 @@ public class RedisController {
         return  redisOperator.mget(keyList);
     }
 
-
-
+    /**
+     * 批量查询pipeline
+     *http://127.0.0.1:8088/redis/batchGet?keys=a1,c1
+     */
+    @GetMapping("/batchGet")
+    public  Object batchGet(String... keys){
+        // 将数组转化为list
+        List<String> keyList= Arrays.asList(keys);
+        return  redisOperator.batchGet(keyList);
+    }
 
 
 

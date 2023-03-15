@@ -121,6 +121,7 @@ public class RedisOperator {
 
 	/**
 	 * 批量查询，管道pipeline
+	 * multiGet 批量查询优化
 	 * @param keys
 	 * @return
 	 */
