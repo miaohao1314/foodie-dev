@@ -93,8 +93,6 @@ public class PassportController extends BaseController {
         usersVO.setUserUniqueToken(uniqueToken);
         CookieUtils.setCookie(request, response, "user",
                 JsonUtils.objectToJson(usersVO), true);
-
-        // TODO 同步购物车数据
         return IMOOCJSONResult.ok();
     }
 
@@ -131,8 +129,6 @@ public class PassportController extends BaseController {
         usersVO.setUserUniqueToken(uniqueToken);
         CookieUtils.setCookie(request, response, "user",
                 JsonUtils.objectToJson(usersVO), true);
-
-        // TODO 同步购物车数据
         return IMOOCJSONResult.ok(userResult);
     }
 
