@@ -37,23 +37,21 @@ public class UserTokenInterceptor implements HandlerInterceptor {
 //        System.out.println("进入到拦截器，被拦截。。。");
 
         String userId = request.getHeader("headerUserId");
+        // 获取前端token，这里登录以后f12有cookie的值才可以
         String userToken = request.getHeader("headerUserToken");
 
         if (StringUtils.isNotBlank(userId) && StringUtils.isNotBlank(userToken)) {
             String uniqueToken = redisOperator.get(REDIS_USER_TOKEN + ":" + userId);
             if (StringUtils.isBlank(uniqueToken)) {
-//                System.out.println("请登录...");
                 returnErrorResponse(response, IMOOCJSONResult.errorMsg("请登录..."));
                 return false;
             } else {
                 if (!uniqueToken.equals(userToken)) {
-//                    System.out.println("账号在异地登录...");
                     returnErrorResponse(response, IMOOCJSONResult.errorMsg("账号在异地登录..."));
                     return false;
                 }
             }
         } else {
-//            System.out.println("请登录...");
             returnErrorResponse(response, IMOOCJSONResult.errorMsg("请登录..."));
             return false;
         }
