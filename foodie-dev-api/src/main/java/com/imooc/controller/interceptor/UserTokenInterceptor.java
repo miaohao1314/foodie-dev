@@ -58,6 +58,7 @@ public class UserTokenInterceptor implements HandlerInterceptor {
 
 
         /**
+         * 拦截器错误返回值，这个值返回给前端
          * false: 请求被拦截，被驳回，验证出现问题
          * true: 请求在经过验证校验以后，是OK的，是可以放行的
          */
@@ -66,7 +67,7 @@ public class UserTokenInterceptor implements HandlerInterceptor {
 
     public void returnErrorResponse(HttpServletResponse response,
                                     IMOOCJSONResult result) {
-        OutputStream out = null;
+            OutputStream out = null;
         try {
             response.setCharacterEncoding("utf-8");
             response.setContentType("text/json");
