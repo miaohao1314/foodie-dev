@@ -23,10 +23,10 @@ public class WebMvcConfig implements WebMvcConfigurer {
                 .addResourceLocations("file:/workspaces/images/");  // 映射本地静态资源
     }
 
-    @Bean
-    public RestTemplate restTemplate(RestTemplateBuilder builder) {
-        return builder.build();
-    }
+//    @Bean
+//    public RestTemplate restTemplate(RestTemplateBuilder builder) {
+//        return builder.build();
+//    }
 
     /**
      * 将拦截器注入

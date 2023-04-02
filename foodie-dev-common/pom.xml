@@ -13,6 +13,12 @@
 	<!--<packaging>jar</packaging>-->
 
 	<artifactId>foodie-dev-common</artifactId>
+    <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+    </dependencies>
 
 
 </project>
