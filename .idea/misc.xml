@@ -3,6 +3,7 @@
   <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="web" url="file://$PROJECT_DIR$/foodie-dev-api" />
+    <file type="web" url="file://$PROJECT_DIR$/rabbit-consumer" />
     <file type="web" url="file://$PROJECT_DIR$/rabbit-producer" />
     <file type="web" url="file://$PROJECT_DIR$/tomcat-cluster" />
   </component>
