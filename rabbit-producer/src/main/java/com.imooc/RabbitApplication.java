@@ -5,8 +5,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 // 代表启动这个程序
 @SpringBootApplication
-public class Application {
+public class RabbitApplication {
     public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
+        SpringApplication.run(RabbitApplication.class, args);
     }
 }
