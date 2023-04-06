@@ -12,6 +12,8 @@
         <module name="rabbit-consumer" />
         <module name="foodie-dev-mapper" />
         <module name="rabbit-producer" />
+        <module name="kafka-consumer" />
+        <module name="kafka-producer" />
         <module name="foodie-dev-service" />
         <module name="foodie-dev-common" />
       </profile>
@@ -27,6 +29,8 @@
       <module name="foodie-dev-mapper" options="-parameters" />
       <module name="foodie-dev-pojo" options="-parameters" />
       <module name="foodie-dev-service" options="-parameters" />
+      <module name="kafka-consumer" options="-parameters" />
+      <module name="kafka-producer" options="-parameters" />
       <module name="rabbit-consumer" options="-parameters" />
       <module name="rabbit-producer" options="-parameters" />
       <module name="tomcat-cluster" options="-parameters" />
