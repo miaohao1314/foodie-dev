@@ -23,10 +23,10 @@ public class MinIOConfig {
     @Value("${minio.secretKey}")
     private String secretKey;
 
-    @Value("${minio.imgSize}")
-    private Integer imgSize;
-    @Value("${minio.fileSize}")
-    private Integer fileSize;
+//    @Value("${minio.imgSize}")
+//    private Integer imgSize;
+//    @Value("${minio.fileSize}")
+//    private Integer fileSize;
 
     /**
      * 创建MinIOUtils
