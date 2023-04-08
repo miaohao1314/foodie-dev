@@ -42,13 +42,14 @@ public class OrderService {
     @Autowired
     private TransactionDefinition transactionDefinition;
 
+    // 使用ReentrantLock解决超卖现象
     private Lock lock = new ReentrantLock();
 
 
 //    @Transactional(rollbackFor = Exception.class)
     public synchronized Integer createOrder() throws Exception{
         Product product = null;
-
+        // 开始之前先开启锁
         lock.lock();
         try {
             // 手动获取事务
@@ -76,6 +77,7 @@ public class OrderService {
             productMapper.updateProductCount(purchaseProductNum,"xxx",new Date(),product.getId());
             platformTransactionManager.commit(transaction1);
         }finally {
+            // 执行完之后释放锁，释放之后下一个线程才会去执行这个方法
             lock.unlock();
         }
 
