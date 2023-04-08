@@ -16,6 +16,7 @@
         <module name="kafka-producer" />
         <module name="foodie-dev-service" />
         <module name="foodie-dev-common" />
+        <module name="distribute-demo" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -24,6 +25,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="distribute-demo" options="-parameters" />
       <module name="foodie-dev-api" options="-parameters" />
       <module name="foodie-dev-common" options="-parameters" />
       <module name="foodie-dev-mapper" options="-parameters" />
