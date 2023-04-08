@@ -33,8 +33,12 @@ public class OrderService {
     private int purchaseProductId = 100100;
     //购买商品数量
     private int purchaseProductNum = 1;
+
+    // 手动控制事务
     @Autowired
     private PlatformTransactionManager platformTransactionManager;
+
+    // 事务的定义
     @Autowired
     private TransactionDefinition transactionDefinition;
 
@@ -42,15 +46,17 @@ public class OrderService {
 
 
 //    @Transactional(rollbackFor = Exception.class)
-    public Integer createOrder() throws Exception{
+    public synchronized Integer createOrder() throws Exception{
         Product product = null;
 
         lock.lock();
         try {
-            // 检索商品是否存在
+            // 手动获取事务
             TransactionStatus transaction1 = platformTransactionManager.getTransaction(transactionDefinition);
+            // 检索商品是否存在
             product = productMapper.selectByPrimaryKey(purchaseProductId);
             if (product==null){
+                // 事务回滚
                 platformTransactionManager.rollback(transaction1);
                 throw new Exception("购买商品："+purchaseProductId+"不存在");
             }
@@ -60,7 +66,8 @@ public class OrderService {
             System.out.println(Thread.currentThread().getName()+"库存数："+currentCount);
             //校验库存（购买商品的数量 > 库存数）
             if (purchaseProductNum > currentCount){
-//                platformTransactionManager.rollback(transaction1);
+                // 事务回滚
+                platformTransactionManager.rollback(transaction1);
                 throw
                         new Exception("商品"+purchaseProductId+"仅剩"+currentCount+"件，无法购买");
             }
@@ -94,6 +101,7 @@ public class OrderService {
         orderItem.setUpdateTime(new Date());
         orderItem.setUpdateUser("xxx");
         orderItemMapper.insertSelective(orderItem);
+        // 提交事务之后，才会去释放锁synchronized，然后其他的线程才可以去争抢这把锁，然后再去执行方法里面的内容
         platformTransactionManager.commit(transaction);
         return order.getId();
     }
