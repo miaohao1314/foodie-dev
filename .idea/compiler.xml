@@ -9,6 +9,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="foodie-dev-pojo" />
         <module name="foodie-dev-api" />
+        <module name="distribute-lock" />
         <module name="rabbit-consumer" />
         <module name="foodie-dev-mapper" />
         <module name="rabbit-producer" />
@@ -26,6 +27,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="distribute-demo" options="-parameters" />
+      <module name="distribute-lock" options="-parameters" />
       <module name="foodie-dev-api" options="-parameters" />
       <module name="foodie-dev-common" options="-parameters" />
       <module name="foodie-dev-mapper" options="-parameters" />

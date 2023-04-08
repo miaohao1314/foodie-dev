@@ -3,6 +3,7 @@
   <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="web" url="file://$PROJECT_DIR$/distribute-demo" />
+    <file type="web" url="file://$PROJECT_DIR$/distribute-lock" />
     <file type="web" url="file://$PROJECT_DIR$/foodie-dev-api" />
     <file type="web" url="file://$PROJECT_DIR$/kafka-consumer" />
     <file type="web" url="file://$PROJECT_DIR$/kafka-producer" />
@@ -18,6 +19,7 @@
         <option value="$PROJECT_DIR$/kafka-producer/pom.xml" />
         <option value="$PROJECT_DIR$/kafka-consumer/pom.xml" />
         <option value="$PROJECT_DIR$/distribute-demo/pom.xml" />
+        <option value="$PROJECT_DIR$/distribute-lock/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
