@@ -79,6 +79,16 @@ public class OrderService {
             lock.unlock();
         }
 
+        /**
+         * 第二种块锁
+
+        synchronized (this){
+            // 写要锁住的内容
+            // this代表这个对象，一个类可以创造很多个对象
+            // OrderService.class 代表这个类
+         */
+
+
         TransactionStatus transaction = platformTransactionManager.getTransaction(transactionDefinition);
         Order order = new Order();
         order.setOrderAmount(product.getPrice().multiply(new BigDecimal(purchaseProductNum)));
