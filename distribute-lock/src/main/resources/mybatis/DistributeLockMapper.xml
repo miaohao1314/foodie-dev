@@ -253,6 +253,8 @@
       business_name = #{businessName,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+<!--  自定义加锁的sql语句-->
   <select id="selectDistributeLock" resultType="com.example.distributelock.model.DistributeLock">
     select * from distribute_lock
     where business_code = #{businessCode,jdbcType=VARCHAR}
