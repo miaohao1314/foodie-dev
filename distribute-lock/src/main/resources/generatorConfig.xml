@@ -5,10 +5,10 @@
 
 <generatorConfiguration>
     <context id="MysqlTables" targetRuntime="MyBatis3">
-        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
                         connectionURL="jdbc:mysql://localhost:3306/distribute?serverTimezone=Asia/Shanghai&amp;useSSL=false"
                         userId="root"
-                        password="123456">
+                        password="root">
             <property name="nullCatalogMeansCurrent" value="true" />
         </jdbcConnection>
 
