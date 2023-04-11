@@ -37,10 +37,14 @@
         </exclusion>
       </exclusions>
     </dependency>
+
+<!--    连接数据库    -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-data-jpa</artifactId>
     </dependency>
+
+<!--    引入redis依赖-->
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-data-redis</artifactId>
