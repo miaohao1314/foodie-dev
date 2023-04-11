@@ -8,6 +8,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="foodie-dev-pojo" />
+        <module name="distribute-zk-lock" />
         <module name="foodie-dev-api" />
         <module name="distribute-lock" />
         <module name="rabbit-consumer" />
@@ -28,6 +29,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="distribute-demo" options="-parameters" />
       <module name="distribute-lock" options="-parameters" />
+      <module name="distribute-zk-lock" options="-parameters" />
       <module name="foodie-dev-api" options="-parameters" />
       <module name="foodie-dev-common" options="-parameters" />
       <module name="foodie-dev-mapper" options="-parameters" />
