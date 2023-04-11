@@ -1,32 +1,25 @@
-package com.example.distributelock.controller;
+package com.example.distributelock.service;
 
 import com.example.distributelock.util.RedisLock;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Service;
 
-/**
- * jdk 1.7之后推出了AutoCloseable，可以自动关闭锁
- */
-
-
-@RestController
+@Service
 @Slf4j
-public class RedisLockTest  {
+public class SchedulerService {
 
     @Autowired
     private RedisTemplate redisTemplate;
 
-    @RequestMapping("RedisLockTest")
-    public  String redisLock(){
-        log.info("我进入了方法");
-
-        // 设置key
-        String key="redisKey";
+    // 设置短信每5秒钟执行一次
+    @Scheduled(cron = "0/5 * * * * ?")
+    public  void  sendSms(){
+        log.info("我进入了短信方法");
+        String key="autoSms";
         RedisLock redisLock=new RedisLock(redisTemplate,key,30);
-
         if(redisLock.getLock()){
             log.info("我进入了锁");
             // 模拟一个处理过程15s
@@ -39,8 +32,6 @@ public class RedisLockTest  {
                 log.info("释放锁的结果是： "+unlock);
             }
         }
-        log.info("方法执行完成");
-        return  "方法执行完成";
-
+        log.info("向159 发送短信");
     }
 }
