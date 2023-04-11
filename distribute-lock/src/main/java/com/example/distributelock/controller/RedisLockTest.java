@@ -6,11 +6,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import java.util.UUID;
+
+/**
+ * jdk 1.7之后推出了AutoCloseable，可以自动关闭锁
+ */
+
 
 @RestController
 @Slf4j
-public class RedisLockTest {
+public class RedisLockTest  implements  AutoCloseable {
 
     @Autowired
     private RedisTemplate redisTemplate;
@@ -30,12 +34,15 @@ public class RedisLockTest {
                 Thread.sleep(15000);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
-            }finally {
-                boolean unlock = redisLock.unlock();
-                log.info("释放锁的结果是： "+unlock);
             }
         }
         log.info("方法执行完成");
         return  "方法执行完成";
+
     }
+    @Override
+    public void close() throws Exception {
+//        unLock();
+    }
+
 }
