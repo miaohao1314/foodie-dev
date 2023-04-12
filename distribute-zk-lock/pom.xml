@@ -41,6 +41,7 @@
     </dependency>
 
 
+<!--    引入 curator-->
     <dependency>
       <groupId>org.apache.curator</groupId>
       <artifactId>curator-recipes</artifactId>

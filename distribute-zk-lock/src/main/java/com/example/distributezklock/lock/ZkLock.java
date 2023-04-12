@@ -26,7 +26,7 @@ public class ZkLock  implements  AutoCloseable, Watcher {
     }
 
     // 获取锁
-    public  boolean getlock(String businessCode){
+    public  boolean getLock(String businessCode){
         // businessCode每个业务创建的锁是不一样的,false代表不需要观察
         try {
             // 创建业务根节点
