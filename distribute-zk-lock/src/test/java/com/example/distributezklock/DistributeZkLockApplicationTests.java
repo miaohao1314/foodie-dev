@@ -33,6 +33,7 @@ public class DistributeZkLockApplicationTests {
         zkLock.close();
     }
 
+//    测试Curator
     @Test
     public void testCuratorLock(){
         RetryPolicy retryPolicy = new ExponentialBackoffRetry(1000, 3);

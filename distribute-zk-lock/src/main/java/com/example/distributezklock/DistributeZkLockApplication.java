@@ -1,33 +1,25 @@
 package com.example.distributezklock;
 
+import org.apache.curator.RetryPolicy;
+import org.apache.curator.framework.CuratorFramework;
+import org.apache.curator.framework.CuratorFrameworkFactory;
+import org.apache.curator.retry.ExponentialBackoffRetry;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
 
-import com.example.distributezklock.lock.ZkLock;
-import lombok.extern.slf4j.Slf4j;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
-
-
-
-/**
- * 测试程序类
- */
-
-@RunWith(SpringRunner.class)
-@SpringBootTest
-@Slf4j
+@SpringBootApplication
 public class DistributeZkLockApplication {
 
-
-    @Test
-    public  void  testZkLock() throws Exception {
-        ZkLock zkLock=new ZkLock();
-        // 获取锁
-        boolean order = zkLock.getlock("order");
-        log.info("获取锁的结果"+order);
-        zkLock.close();
-
+    public static void main(String[] args) {
+        SpringApplication.run(DistributeZkLockApplication.class, args);
     }
 
+//    将固定连接生成一个示例，每次使用注入实例即可
+    @Bean(initMethod="start",destroyMethod = "close")
+    public CuratorFramework getCuratorFramework() {
+        RetryPolicy retryPolicy = new ExponentialBackoffRetry(1000, 3);
+        CuratorFramework client = CuratorFrameworkFactory.newClient("localhost:2181", retryPolicy);
+        return client;
+    }
 }
