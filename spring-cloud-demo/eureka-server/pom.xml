@@ -5,18 +5,37 @@
         <groupId>org.example</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
+
+    <!--    配置打包类型-->
+    <packaging>jar</packaging>
+
     <modelVersion>4.0.0</modelVersion>
     <artifactId>eureka-server</artifactId>
-    <packaging>war</packaging>
     <name>eureka-server Maven Webapp</name>
-    <url>http://maven.apache.org</url>
+    <url>https://maven.aliyun.com/repository/spring</url>
+
+
+
+
+
     <dependencies>
+<!--        <dependency>-->
+<!--            <groupId>junit</groupId>-->
+<!--            <artifactId>junit</artifactId>-->
+<!--            <version>3.8.1</version>-->
+<!--            <scope>test</scope>-->
+<!--        </dependency>-->
+
+<!--        引入eureka-server服务,version从父类中获取-->
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>3.8.1</version>
-            <scope>test</scope>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
+            <version>3.1.1</version>
         </dependency>
+
+
+
+
     </dependencies>
     <build>
         <finalName>eureka-server</finalName>
