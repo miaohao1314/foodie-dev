@@ -10,6 +10,7 @@
     <file type="web" url="file://$PROJECT_DIR$/kafka-producer" />
     <file type="web" url="file://$PROJECT_DIR$/rabbit-consumer" />
     <file type="web" url="file://$PROJECT_DIR$/rabbit-producer" />
+    <file type="web" url="file://$PROJECT_DIR$/spring-cloud-demo" />
     <file type="web" url="file://$PROJECT_DIR$/tomcat-cluster" />
   </component>
   <component name="MavenProjectsManager">
@@ -22,6 +23,7 @@
         <option value="$PROJECT_DIR$/distribute-demo/pom.xml" />
         <option value="$PROJECT_DIR$/distribute-lock/pom.xml" />
         <option value="$PROJECT_DIR$/distribute-zk-lock/pom.xml" />
+        <option value="$PROJECT_DIR$/spring-cloud-demo/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
