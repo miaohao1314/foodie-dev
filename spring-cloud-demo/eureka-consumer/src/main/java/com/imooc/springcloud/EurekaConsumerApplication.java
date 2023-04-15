@@ -4,18 +4,25 @@ import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.context.annotation.Bean;
+import org.springframework.web.client.RestTemplate;
 
 /**
- * 服务提供者
- *@EnableDiscoveryClient: 需要到注册中心拉去服务注册列表
- * 运行这里类之前先启动EurekaServerApplication
+ * 服务调用者
+ * 先启动EurekaClientApplication
  */
 
 @SpringBootApplication
 @EnableDiscoveryClient
-public class EurekaClientApplication {
+public class EurekaConsumerApplication {
+
+    @Bean
+    public RestTemplate restTemplate(){
+        return new RestTemplate();
+    }
+
     public static void main(String[] args) {
-        new SpringApplicationBuilder(EurekaClientApplication.class)
+        new SpringApplicationBuilder(EurekaConsumerApplication.class)
                 .web(WebApplicationType.SERVLET)
                 .run(args);
     }

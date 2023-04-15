@@ -7,6 +7,7 @@
   <version>1.0-SNAPSHOT</version>
   <modules>
     <module>eureka-server</module>
+      <module>eureka-consumer</module>
   </modules>
   <name>spring-cloud-demo Maven Webapp</name>
   <url>http://maven.apache.org</url>
