@@ -27,11 +27,6 @@
         <option value="$PROJECT_DIR$/spring-cloud-demo/eureka-client/pom.xml" />
       </list>
     </option>
-    <option name="ignoredFiles">
-      <set>
-        <option value="$PROJECT_DIR$/tomcat-cluster/pom.xml" />
-      </set>
-    </option>
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">

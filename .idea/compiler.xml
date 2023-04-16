@@ -18,10 +18,12 @@
         <module name="eureka-client" />
         <module name="foodie-dev-mapper" />
         <module name="rabbit-producer" />
+        <module name="eureka-server-peer" />
         <module name="foodie-dev-service" />
         <module name="foodie-dev-common" />
         <module name="eureka-consumer" />
         <module name="distribute-demo" />
+        <module name="eureka-server-peer2" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
