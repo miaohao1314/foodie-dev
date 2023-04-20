@@ -30,6 +30,9 @@ public class ESTest {
         stu.setStuId(1001L);
         stu.setName("bat man");
         stu.setAge(18)  ;
+        stu.setMoney(18.8f);
+        stu.setSign("i am spider man");
+        stu.setDescription("i wish i am spilder man");
 
         IndexQuery build = new IndexQueryBuilder().withObject(stu).build();
         // 创建索引
