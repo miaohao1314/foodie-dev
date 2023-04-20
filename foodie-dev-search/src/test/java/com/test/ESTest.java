@@ -23,6 +23,9 @@ public class ESTest {
     @Autowired
     private ElasticsearchTemplate elasticsearchTemplate;
 
+    /**
+     * 创建一个索引
+     */
     @Test
     public  void  createIndesStu(){
 
@@ -37,6 +40,17 @@ public class ESTest {
         IndexQuery build = new IndexQueryBuilder().withObject(stu).build();
         // 创建索引
         elasticsearchTemplate.index(build);
-
     }
+
+    /**
+     * 删除一个索引
+     */
+
+    @Test
+    public  void deleteIndexStu(){
+        elasticsearchTemplate.deleteIndex(Stu.class);
+    }
+
+
+
 }
