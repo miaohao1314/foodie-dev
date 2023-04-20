@@ -6,6 +6,7 @@
     <file type="web" url="file://$PROJECT_DIR$/distribute-lock" />
     <file type="web" url="file://$PROJECT_DIR$/distribute-zk-lock" />
     <file type="web" url="file://$PROJECT_DIR$/foodie-dev-api" />
+    <file type="web" url="file://$PROJECT_DIR$/foodie-dev-search" />
     <file type="web" url="file://$PROJECT_DIR$/kafka-consumer" />
     <file type="web" url="file://$PROJECT_DIR$/kafka-producer" />
     <file type="web" url="file://$PROJECT_DIR$/rabbit-consumer" />

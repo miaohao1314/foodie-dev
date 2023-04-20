@@ -21,6 +21,7 @@
         <module name="eureka-server-peer" />
         <module name="foodie-dev-service" />
         <module name="foodie-dev-common" />
+        <module name="foodie-dev-search" />
         <module name="eureka-consumer" />
         <module name="distribute-demo" />
         <module name="eureka-server-peer2" />
@@ -39,6 +40,7 @@
       <module name="foodie-dev-common" options="-parameters" />
       <module name="foodie-dev-mapper" options="-parameters" />
       <module name="foodie-dev-pojo" options="-parameters" />
+      <module name="foodie-dev-search" options="-parameters" />
       <module name="foodie-dev-service" options="-parameters" />
       <module name="kafka-consumer" options="-parameters" />
       <module name="kafka-producer" options="-parameters" />
