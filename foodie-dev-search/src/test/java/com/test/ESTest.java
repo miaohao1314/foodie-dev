@@ -4,15 +4,20 @@ package com.test;
 import com.imooc.Application;
 import com.imooc.es.pojo.Stu;
 import org.elasticsearch.action.index.IndexRequest;
+import org.elasticsearch.index.query.QueryBuilders;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.elasticsearch.core.ElasticsearchTemplate;
+import org.springframework.data.elasticsearch.core.aggregation.AggregatedPage;
 import org.springframework.data.elasticsearch.core.query.*;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RunWith(SpringRunner.class)
@@ -38,18 +43,31 @@ public class ESTest {
     @Test
     public void createIndesStu() {
 
-        Stu stu = new Stu();
-        stu.setStuId(1001L);
-        stu.setName("bat man");
-        stu.setAge(18);
-        stu.setMoney(18.8f);
-        stu.setSign("i am spider man");
-        stu.setDescription("i wish i am spilder man");
+        Stu stu = setIndexData();
 
         IndexQuery build = new IndexQueryBuilder().withObject(stu).build();
         // 创建索引
         esTemplate.index(build);
     }
+
+
+    public Stu setIndexData() {
+        Stu stu = new Stu();
+        stu.setStuId(1001L);
+        stu.setStuId(1002L);
+        stu.setName("bat man");
+        stu.setName("schesa man");
+        stu.setAge(18);
+        stu.setAge(20);
+        stu.setMoney(18.8f);
+        stu.setMoney(29.8f);
+        stu.setSign("i am spider man");
+        stu.setSign("ffffffff spider man");
+        stu.setDescription("i wish i am spilder man");
+        stu.setDescription("ffffffffam spilder man");
+        return stu;
+    }
+
 
     /**
      * 删除一个索引
@@ -69,10 +87,7 @@ public class ESTest {
     public void updateStuDoc() {
 
         // 设置要更新的数据
-        Map<String, Object> sourceMap = new HashMap<>();
-        sourceMap.put("sign", "I am not super man");
-        sourceMap.put("money", 99.8f);
-        sourceMap.put("age", 33);
+        Map<String, Object> sourceMap = setDocData();
 
         IndexRequest indexRequest = new IndexRequest();
         // 具体要更新的数据
@@ -88,6 +103,14 @@ public class ESTest {
 //        update stu set sign='abc',age=33,money=88.6 where docId='1002'
 
         esTemplate.update(updateQuery);
+    }
+
+    public Map<String, Object> setDocData() {
+        Map<String, Object> sourceMap = new HashMap<>();
+        sourceMap.put("sign", "I am not super man");
+        sourceMap.put("money", 99.8f);
+        sourceMap.put("age", 33);
+        return sourceMap;
     }
 
 
@@ -112,5 +135,26 @@ public class ESTest {
         esTemplate.delete(Stu.class, "1001");
     }
 
+    /**
+     * 对文档进行分页搜索
+     */
 
+    @Test
+    public void searchStuDoc() {
+//        携带分页的参数,size表示每页显示几条数据
+        Pageable pageable = PageRequest.of(0, 3);
+
+//        SearchQuery： 搜索条件
+        SearchQuery query = new NativeSearchQueryBuilder()
+                .withQuery(QueryBuilders.matchQuery("description", "man"))
+                .withPageable(pageable)
+                .build();
+        AggregatedPage<Stu> pagedStu = esTemplate.queryForPage(query, Stu.class);
+        System.out.println("检索后的总分页数目为：" + pagedStu.getTotalPages());
+//        获得分页的内容
+        List<Stu> stuList = pagedStu.getContent();
+        for (Stu s : stuList) {
+            System.out.println(s);
+        }
+    }
 }
