@@ -9,10 +9,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.elasticsearch.core.ElasticsearchTemplate;
-import org.springframework.data.elasticsearch.core.query.IndexQuery;
-import org.springframework.data.elasticsearch.core.query.IndexQueryBuilder;
-import org.springframework.data.elasticsearch.core.query.UpdateQuery;
-import org.springframework.data.elasticsearch.core.query.UpdateQueryBuilder;
+import org.springframework.data.elasticsearch.core.query.*;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.HashMap;
@@ -91,6 +88,28 @@ public class ESTest {
 //        update stu set sign='abc',age=33,money=88.6 where docId='1002'
 
         esTemplate.update(updateQuery);
+    }
+
+
+    /**
+     * 对文档数据进行查询操作
+     */
+
+    @Test
+    public void getStuDoc() {
+
+        GetQuery query = new GetQuery();
+        query.setId("1001");
+        Stu stu = esTemplate.queryForObject(query, Stu.class);
+        System.out.println(stu);
+    }
+
+    /**
+     * 对文档数据进行删除操作，不会像索引那样将整合表给删除掉，它只会删除表格里面的数据
+     */
+    @Test
+    public void deleteStuDoc() {
+        esTemplate.delete(Stu.class, "1001");
     }
 
 
