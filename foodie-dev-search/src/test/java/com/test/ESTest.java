@@ -183,8 +183,10 @@ public class ESTest {
 
         Pageable pageable = PageRequest.of(0, 10);
 
+//        money倒序
         SortBuilder sortBuilder = new FieldSortBuilder("money")
                 .order(SortOrder.DESC);
+//        age 排序
         SortBuilder sortBuilderAge = new FieldSortBuilder("age")
                 .order(SortOrder.ASC);
 
