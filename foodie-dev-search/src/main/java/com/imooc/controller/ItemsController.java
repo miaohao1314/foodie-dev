@@ -56,8 +56,6 @@ public class ItemsController {
                 sort,
                 page,
                 pageSize);
-
         return IMOOCJSONResult.ok(grid);
     }
-
 }
