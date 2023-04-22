@@ -2,6 +2,7 @@ package com.test;
 
 
 import com.imooc.Application;
+import com.imooc.es.pojo.Items;
 import com.imooc.es.pojo.Stu;
 import org.elasticsearch.action.index.IndexRequest;
 import org.elasticsearch.action.search.SearchResponse;
@@ -54,9 +55,12 @@ public class ESTest {
     @Test
     public void createIndesStu() {
 
-        Stu stu = setIndexData();
+//        Stu stu = setIndexData();
+//
+//        IndexQuery build = new IndexQueryBuilder().withObject(stu).build();
 
-        IndexQuery build = new IndexQueryBuilder().withObject(stu).build();
+        Items items=setIndexDatas();
+        IndexQuery build = new IndexQueryBuilder().withObject(items).build();
         // 创建索引
         esTemplate.index(build);
     }
@@ -78,6 +82,23 @@ public class ESTest {
         stu.setDescription("ffffffffam spilder man");
         return stu;
     }
+
+    /**
+     * 为了item表设置数据
+     */
+    public Items setIndexDatas() {
+        Items items=new Items();
+        items.setItemId("cake-37");
+        items.setItemName("好吃蛋糕");
+        items.setPrice(4720);
+        items.setImgUrl("https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png");
+        items.setSellCounts(3786);
+        return items;
+    }
+
+
+
+
 
 
     /**

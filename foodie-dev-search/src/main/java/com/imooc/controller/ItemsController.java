@@ -21,6 +21,16 @@ public class ItemsController {
         return "Hello Elasticsearch~";
     }
 
+
+    /**
+     * 检索功能：
+     * http://127.0.0.1:8033/items/es/search?sort=k&keywords=好吃蛋糕
+     * @param keywords
+     * @param sort
+     * @param page
+     * @param pageSize
+     * @return
+     */
     @GetMapping("/es/search")
     public IMOOCJSONResult search(
                             String keywords,
