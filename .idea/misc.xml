@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/collector" />
     <file type="web" url="file://$PROJECT_DIR$/distribute-demo" />
     <file type="web" url="file://$PROJECT_DIR$/distribute-lock" />
     <file type="web" url="file://$PROJECT_DIR$/distribute-zk-lock" />
