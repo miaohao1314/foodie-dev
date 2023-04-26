@@ -20,7 +20,7 @@ public class ApplicationTests {
 
         String topic = "miaohao-topic";
         for(int i=0; i < 10; i ++) {
-            kafkaProducerService.sendMessage(topic, "hello kafka" + i);
+            kafkaProducerService.sendMessage(topic, "hello kafka123" + i);
             Thread.sleep(5);
         }
         Thread.sleep(Integer.MAX_VALUE);

@@ -10,6 +10,8 @@ import lombok.extern.slf4j.Slf4j;
 
 /**
  * 	$KafkaProducerService
+ * 	第一个创建的类
+ * 	类的作用： 用来发送消息的
  * @author Alienware
  *
  */
@@ -21,9 +23,15 @@ public class KafkaProducerService {
     @Autowired
     private KafkaTemplate<String, Object> kafkaTemplate;
 
+    /**
+     *
+     * @param topic    发送的目的地
+     * @param object   发送的消息内容
+     */
     public void sendMessage(String topic, Object object) {
 
         // 消费者将消息发送到topic
+        // future做一个Callback
         ListenableFuture<SendResult<String, Object>> future = kafkaTemplate.send(topic, object);
 
         // 消息发送成功以后应该去做什么

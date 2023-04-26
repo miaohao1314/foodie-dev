@@ -1,7 +1,9 @@
 package com.imooc.config;
 
+import com.imooc.utils.MinIOUtils;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
@@ -12,6 +14,10 @@ import org.springframework.context.annotation.Configuration;
 @Data
 public class MinIOConfig {
 
+    /**
+     * 创建MinIOUtils
+     * @return
+     */
     @Value("${minio.endpoint}")
     private String endpoint;
     @Value("${minio.fileHost}")
@@ -28,13 +34,11 @@ public class MinIOConfig {
 //    @Value("${minio.fileSize}")
 //    private Integer fileSize;
 
-    /**
-     * 创建MinIOUtils
-     * @return
-     */
 
-//    @Bean
-//    public MinIOUtils creatMinioClient() {
-//        return  new MinIOUtils(endpoint,bucketName,accessKey,secretKey);
-//    }
+    public MinIOConfig(){}
+
+    @Bean
+    public MinIOUtils creatMinioClient() {
+        return  new MinIOUtils(endpoint,bucketName,accessKey,secretKey);
+    }
 }

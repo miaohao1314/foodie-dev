@@ -16,13 +16,15 @@ import com.rabbitmq.client.Channel;
 public class RabbitReceive {
 
     /**
-     * durable: 是否持久化
      *
+     * durable: 是否持久化
+     * <p>
      * 组合使用监听
-     * @RabbitListener @QueueBinding @Queue @Exchange
+     *
      * @param message
      * @param channel
      * @throws Exception
+     * @RabbitListener @QueueBinding @Queue @Exchange
      */
     @RabbitListener(bindings = @QueueBinding(
             value = @Queue(value = "queue-1", durable = "true"),
@@ -42,8 +44,7 @@ public class RabbitReceive {
 
         //  2. 处理成功之后 获取deliveryTag 并进行手工的ACK操作, 因为我们配置文件里配置的是 手工签收
         //	spring.rabbitmq.listener.simple.acknowledge-mode=manual
-        Long deliveryTag = (Long)message.getHeaders().get(AmqpHeaders.DELIVERY_TAG);
+        Long deliveryTag = (Long) message.getHeaders().get(AmqpHeaders.DELIVERY_TAG);
         channel.basicAck(deliveryTag, false);
-
     }
 }

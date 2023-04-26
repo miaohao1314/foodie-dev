@@ -35,8 +35,8 @@ spring:
       connection-test-query: SELECT 1
   servlet:
     multipart:
-      max-file-size: 2MB     # 文件上传大小限制为500kb（5*1024）
-      max-request-size: 2MB  # 请求大小限制为500kb
+      max-file-size: 200MB     # 文件上传大小限制为500kb（5*1024）
+      max-request-size: 200MB  # 请求大小限制为500kb
 
 ############################################################
 #

@@ -38,6 +38,7 @@ public class MinIOUtils {
     private static final String SEPARATOR = "/";
 
     public MinIOUtils() {
+        super();
     }
 
     public MinIOUtils(String endpoint, String bucketName, String accessKey, String secretKey, Integer imgSize, Integer fileSize) {
@@ -51,7 +52,15 @@ public class MinIOUtils {
     }
 
 
-
+    public MinIOUtils(String endpoint, String bucketName, String accessKey, String secretKey) {
+        MinIOUtils.endpoint = endpoint;
+        MinIOUtils.bucketName = bucketName;
+        MinIOUtils.accessKey = accessKey;
+        MinIOUtils.secretKey = secretKey;
+        MinIOUtils.imgSize = imgSize;
+        MinIOUtils.fileSize = fileSize;
+        createMinioClient();
+    }
     /**
      * 重点：  创建基于Java端的MinioClient
      */

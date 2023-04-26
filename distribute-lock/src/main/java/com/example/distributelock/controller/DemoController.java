@@ -35,7 +35,7 @@ public class DemoController {
         log.info("我进入了锁");
         // 线程休眠60s
         try {
-            Thread.sleep(60000);
+            Thread.sleep(6000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }

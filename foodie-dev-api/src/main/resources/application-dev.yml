@@ -34,6 +34,6 @@ minio:
   bucketName: imooc                      # 存储桶bucket名称
   accessKey: minio                         # 用户名
   secretKey: 12345678                     # 密码
-  imgSize: 1024                           # 图片大小限制，单位：m
-  fileSize: 1024                          # 文件大小限制，单位：m
+  imgSize: 10240                           # 图片大小限制，单位：m
+  fileSize: 10240                          # 文件大小限制，单位：m
 

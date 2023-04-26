@@ -35,17 +35,17 @@ public class FileController extends BaseController {
 
     @Autowired
     private RedisOperator redisOperator;
-//    @PostMapping("/testUpload")
-//    public IMOOCJSONResult upload(MultipartFile file) throws  Exception{
-////        获取文件名字
-//        String fileName = file.getOriginalFilename();
-//        MinIOUtils.uploadFile(minIOConfig.getBucketName(),file,fileName, file.getInputStream().toString());
-//
-//        // http://43.143.191.173:9000/imooc/test.png
-//        // fileHost对应在yml文件中
-//        String url=minIOConfig.getFileHost()+"/"+minIOConfig.getBucketName()+"/"+fileName;
-//        return  IMOOCJSONResult.ok(url);
-//    }
+    @PostMapping("/testUpload")
+    public IMOOCJSONResult upload(MultipartFile file) throws  Exception{
+//        获取文件名字
+        String fileName = file.getOriginalFilename();
+        MinIOUtils.uploadFile(minIOConfig.getBucketName(),file,fileName, file.getInputStream().toString());
+
+        // http://43.143.191.173:9000/imooc/test.png
+        // fileHost对应在yml文件中
+        String url=minIOConfig.getFileHost()+"/"+minIOConfig.getBucketName()+"/"+fileName;
+        return  IMOOCJSONResult.ok(url);
+    }
 
     @ApiOperation(value = "用户头像修改", notes = "用户头像修改", httpMethod = "POST")
     @PostMapping("/uploadFace")
