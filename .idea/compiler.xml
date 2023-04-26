@@ -14,6 +14,7 @@
         <module name="kafka-consumer" />
         <module name="kafka-producer" />
         <module name="eureka-server" />
+        <module name="collector" />
         <module name="foodie-dev-api" />
         <module name="eureka-client" />
         <module name="foodie-dev-mapper" />
