@@ -62,4 +62,15 @@ public class IndexController {
     }
 
 
+    @RequestMapping(value = "/err")
+    public String err() {
+        InputMDC.putMDC();
+        try {
+            int a = 1/0;
+        } catch (Exception e) {
+            log.error("算术异常", e);
+        }
+        return "err";
+    }
+
 }
