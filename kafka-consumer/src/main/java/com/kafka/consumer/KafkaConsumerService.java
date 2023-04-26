@@ -7,12 +7,17 @@ import org.springframework.stereotype.Component;
 
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * 第二个需要写的内容
+ */
+
 @Slf4j
 @Component
 public class KafkaConsumerService {
 
 
     /**
+     *
      * 先启动ApplicationTests发送消息，在启动这个类去接收消息
      */
 
