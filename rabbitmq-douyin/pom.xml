@@ -61,6 +61,13 @@
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
     </dependency>
+    <!--    lombok: 自动生成代码（它支持生成特定的getter和setter方法、toString()、equals()、hashCode()、日志创建等）-->
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <version>1.18.8</version>
+    </dependency>
+
   </dependencies>
   <build>
     <finalName>rabbitmq-douyin</finalName>

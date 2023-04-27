@@ -25,4 +25,10 @@ public class HelloController {
         rabbitTemplate.convertAndSend(RabbitMQConfig.EXCHANGE_MST, "sys.msg.send", "我发了一个消息");
         return "success";
     }
+
+    @GetMapping("produceTwo")
+    public Object produceTwo() throws Exception {
+        rabbitTemplate.convertAndSend(RabbitMQConfig.EXCHANGE_MST, "sys.msg.delete", "我删除了一个消息");
+        return "successTwo";
+    }
 }
