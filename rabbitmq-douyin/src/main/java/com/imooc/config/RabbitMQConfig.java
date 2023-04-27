@@ -1,4 +1,4 @@
-package com.imooc;
+package com.imooc.config;
 
 
 import org.springframework.amqp.core.*;
