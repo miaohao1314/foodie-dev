@@ -49,6 +49,7 @@
       <module name="kafka-producer" options="-parameters" />
       <module name="rabbit-consumer" options="-parameters" />
       <module name="rabbit-producer" options="-parameters" />
+      <module name="rabbitmq-douyin" options="-parameters" />
       <module name="tomcat-cluster" options="-parameters" />
     </option>
   </component>
