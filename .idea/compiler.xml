@@ -19,6 +19,7 @@
         <module name="eureka-client" />
         <module name="foodie-dev-mapper" />
         <module name="rabbit-producer" />
+        <module name="rabbitmq-douyin" />
         <module name="eureka-server-peer" />
         <module name="foodie-dev-service" />
         <module name="foodie-dev-common" />

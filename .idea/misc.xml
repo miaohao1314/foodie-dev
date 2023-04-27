@@ -12,6 +12,7 @@
     <file type="web" url="file://$PROJECT_DIR$/kafka-producer" />
     <file type="web" url="file://$PROJECT_DIR$/rabbit-consumer" />
     <file type="web" url="file://$PROJECT_DIR$/rabbit-producer" />
+    <file type="web" url="file://$PROJECT_DIR$/rabbitmq-douyin" />
     <file type="web" url="file://$PROJECT_DIR$/spring-cloud-demo" />
     <file type="web" url="file://$PROJECT_DIR$/tomcat-cluster" />
   </component>
@@ -28,6 +29,7 @@
         <option value="$PROJECT_DIR$/spring-cloud-demo/pom.xml" />
         <option value="$PROJECT_DIR$/spring-cloud-demo/eureka-client/pom.xml" />
         <option value="$PROJECT_DIR$/collector/pom.xml" />
+        <option value="$PROJECT_DIR$/rabbitmq-douyin/pom.xml" />
       </list>
     </option>
   </component>
